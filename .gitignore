@@ -1,0 +1,5 @@
+_site/
+.jekyll-cache/
+# Add any other standard Jekyll ignores if you like
+.sass-cache/
+.jekyll-metadata
