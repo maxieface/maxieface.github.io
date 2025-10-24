@@ -1,37 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Max Schmeder, PhD</title>
-  <style>
-    /* Simple reset */
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: sans-serif;
-    }
-    /* Flexbox to center the content */
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #222; /* A dark background */
-      color: #eee;
-    }
-    /* Image styling */
-    .splash-image {
-      max-width: 90%; /* Responsive width */
-      max-height: 90vh; /* Max height */
-      height: auto;
-      width: auto; /* Maintain aspect ratio */
-      border-radius: 8px; /* Slightly rounded corners */
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title> <style>
+        /* Basic reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: sans-serif;
+            background-color: #1a1a1a; /* Dark background fallback */
+            color: #eee;
+            overflow: hidden; /* Prevent scrollbars if image is slightly too big */
+        }
+
+        /* Main container using Flexbox */
+        .container {
+            display: flex; /* Arrange children (image, text) side-by-side */
+            align-items: center; /* Vertically center items */
+            justify-content: center; /* Horizontally center the whole group */
+            height: 100vh; /* Full viewport height */
+            width: 100vw; /* Full viewport width */
+            padding: 2vw; /* Add some padding based on viewport width */
+            box-sizing: border-box; /* Include padding in width/height */
+        }
+
+        /* Image styling */
+        .splash-image {
+            max-width: 65%; /* Let image take up majority of width, adjust as needed */
+            max-height: 90vh; /* Limit height */
+            height: auto;
+            width: auto; /* Maintain aspect ratio */
+            object-fit: contain; /* Ensure image fits without distortion */
+            border-radius: 8px; /* Optional: Rounded corners */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Spooky shadow */
+        }
+
+        /* Text block styling */
+        .text-block {
+            padding-left: 3vw; /* Space between image and text */
+            max-width: 30%; /* Limit text width, adjust as needed */
+            text-align: justify; /* Justify the text */
+        }
+
+        .text-block h1 {
+            font-size: 1.8em; /* Adjust size as needed */
+            margin-bottom: 0.8em;
+            color: #f0f0f0;
+        }
+
+        .text-block ul {
+            list-style: none; /* Remove bullet points */
+            padding: 0;
+            margin: 0;
+        }
+
+        .text-block li {
+            margin-bottom: 0.6em; /* Space between links */
+        }
+
+        .text-block a {
+            color: #aaa; /* Subtler link color for dark theme */
+            text-decoration: none; /* No underline */
+            font-size: 1.1em;
+            transition: color 0.3s ease; /* Smooth hover effect */
+        }
+
+        .text-block a:hover {
+            color: #fff; /* Brighter on hover */
+        }
+
+        /* Basic responsiveness for smaller screens (we'll refine later) */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack image and text vertically */
+                justify-content: center;
+                text-align: center; /* Center text on small screens */
+            }
+            .splash-image {
+                max-width: 90%; /* Allow image to be wider */
+                max-height: 50vh; /* Adjust height limit */
+                margin-bottom: 3vh;
+            }
+            .text-block {
+                max-width: 90%; /* Allow text block to be wider */
+                padding-left: 0; /* Remove side padding */
+                text-align: center; /* Center text */
+            }
+        }
+    </style>
 </head>
 <body>
-  <img src="/assets/max.jpg" alt="A photo of Max Schmeder" class="splash-image">
+    <div class="container">
+        <img src="/assets/max.jpg" alt="A photo of Max Schmeder at his desk" class="splash-image">
+
+        <div class="text-block">
+            <h1>Max Schmeder, PhD:</h1>
+            <ul>
+                <li><a href="#">Cultural Decoder</a></li>
+                <li><a href="#">Crypto-Musicologist</a></li>
+                <li><a href="#">Institutional Cartographer</a></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
